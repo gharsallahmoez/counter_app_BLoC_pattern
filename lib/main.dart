@@ -1,5 +1,7 @@
+import 'package:counter_app/bloc/counterBloc.dart';
 import 'package:counter_app/screens/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +17,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Home(),
+      home: BlocProvider<CounterBloc>(
+        create: (context) => CounterBloc(0),
+        child: Home(),
+      ),
     );
   }
 }
